@@ -1,0 +1,21 @@
+# node modules
+node_modules
+
+# .env
+.env
+/.vscode
+
+#keys
+keys/
+coverage/
+
+#Product.json
+config/product.json
+
+#errors
+undefinederror/
+undefinedinfo/
+undefinedfatal/
+
+dump.rdb
+
