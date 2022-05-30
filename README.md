@@ -28,3 +28,9 @@ Follow bellow script on CLI to run this Application
 ### Requirements
 
 - NodeJs - V12
+
+### .env configurations
+
+`APP_PORT=3002 LOG_MODE=true `
+
+`#db DB_HOST=xxxxx DB_USER=xxx DB_PASSWORD=xxx DB_DATABASE=xxx `
