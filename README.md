@@ -34,3 +34,8 @@ Follow bellow script on CLI to run this Application
 `APP_PORT=3002 LOG_MODE=true `
 
 `#db DB_HOST=xxxxx DB_USER=xxx DB_PASSWORD=xxx DB_DATABASE=xxx `
+
+### DB schema
+
+Find the DB schema under below folder path
+`cafe-service -> src -> migrations`
