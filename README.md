@@ -28,6 +28,7 @@ Follow bellow script on CLI to run this Application
 ### Requirements
 
 - NodeJs - V12
+- MySQL -V8.0.29
 
 ### .env configurations
 
