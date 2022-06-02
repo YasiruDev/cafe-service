@@ -43,4 +43,4 @@ Find the DB schema under below folder path
 
 ### API Document
 
-- [API Documen] (https://github.com/YasiruDev/cafe-service/blob/main/API-Document%20-%201.0.0.docx)
+- [API Document](https://github.com/YasiruDev/cafe-service/blob/main/API-Document%20-%201.0.0.docx)
