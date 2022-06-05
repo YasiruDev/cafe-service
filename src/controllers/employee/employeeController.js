@@ -10,12 +10,13 @@ class EmployeeController {
 
   async addNewEmployee(req, res) {
     try {
-      const { name, email, phone, cafeId } = req.body;
+      const { name, email, phone, cafeId, gender } = req.body;
       const data = {
         name,
         email,
         phone,
         cafeId,
+        gender,
       };
       await this.employeeService.addNewEmployee(data);
       logger.info(
@@ -45,9 +46,11 @@ class EmployeeController {
     }
   }
 
+  //Get Employee list / get employee by cafe id
   async getEmployeeList(req, res) {
     try {
-      const employeeList = await this.employeeService.getEmployeeList();
+      const { cafeId } = req.query;
+      const employeeList = await this.employeeService.getEmployeeList(cafeId);
       logger.info(
         {
           payload: {
@@ -64,6 +67,78 @@ class EmployeeController {
         {
           payload: {
             type: constant.STRING_TYPES.EMPLOYEE,
+            uuid: req.uuid,
+            error: error.message,
+          },
+        },
+        constant.MSG.APP_ERROR
+      );
+
+      res.status(constant.RESPONSE.INTERNAL_ERROR.CODE).send(response.res(false, error.message));
+    }
+  }
+
+  async editEmployee(req, res) {
+    try {
+      const { name, email, id, phone, cafeId } = req.body;
+      const data = {
+        name,
+        email,
+        id,
+        phone,
+        cafeId,
+      };
+      await this.employeeService.updateEmployee(data);
+      logger.info(
+        {
+          payload: {
+            type: constant.STRING_TYPES.CAFE,
+            uuid: req.uuid,
+            data,
+          },
+        },
+        constant.MSG.CAFE_UPDATE
+      );
+      res.send(response.res(true, constant.MSG.CAFE_UPDATE, data));
+    } catch (error) {
+      logger.error(
+        {
+          payload: {
+            type: constant.STRING_TYPES.CAFE,
+            uuid: req.uuid,
+            error: error.message,
+          },
+        },
+        constant.MSG.APP_ERROR
+      );
+
+      res.status(constant.RESPONSE.INTERNAL_ERROR.CODE).send(response.res(false, error.message));
+    }
+  }
+
+  //Delete employee by employee Id
+  async deleteEmployee(req, res) {
+    try {
+      const { id } = req.body;
+
+      await this.employeeService.deleteEmployeeByEmployeeId(id);
+
+      logger.info(
+        {
+          payload: {
+            type: constant.STRING_TYPES.CAFE,
+            uuid: req.uuid,
+            data: id,
+          },
+        },
+        constant.MSG.EMPLOYEE_DELETE
+      );
+      res.send(response.res(true, constant.MSG.EMPLOYEE_DELETE, { data: id }));
+    } catch (error) {
+      logger.error(
+        {
+          payload: {
+            type: constant.STRING_TYPES.CAFE,
             uuid: req.uuid,
             error: error.message,
           },

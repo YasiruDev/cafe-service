@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const fileupload = require("express-fileupload");
 const routes = require("../routes");
 const response = require("../config/response");
 const constant = require("../config/constant");
@@ -19,13 +20,15 @@ module.exports = () => {
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(fileupload({ createParentPath: true }));
+  app.use("/uploads", express.static("uploads"));
   app.use("/api/", routes);
 
-  app.use(function (req, res, next) {
-    res
-      .status(constant.RESPONSE.NOT_FOUND.CODE)
-      .send(response.res(false, constant.MSG.INVALID_URL));
-  });
+  // app.use(function (req, res, next) {
+  //   res
+  //     .status(constant.RESPONSE.NOT_FOUND.CODE)
+  //     .send(response.res(false, constant.MSG.INVALID_URL));
+  // });
 
   app.listen(process.env.APP_PORT, () => {
     console.log("App listening on port", process.env.APP_PORT);

@@ -40,6 +40,46 @@ const checkvalidator = {
       },
     ];
   },
+  idParamValidation: () => {
+    return [
+      body(constant.VALIDATION.ID)
+        .exists()
+        .withMessage(`${constant.VALIDATION.ID} ${constant.VALIDATION.REQUIRED} `)
+        .isNumeric()
+        .withMessage(`${constant.VALIDATION.ID} ${constant.VALIDATION.NUMBER}`),
+      (req, res, next) => {
+        req.uuid = uuid;
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+          res
+            .status(constant.RESPONSE.NOT_FOUND.CODE)
+            .send(response.res(false, constant.MSG.PARAM_ERROR, errors.array()));
+        } else {
+          next();
+        }
+      },
+    ];
+  },
+  putParamValidation: () => {
+    return [
+      body(constant.VALIDATION.ID)
+        .exists()
+        .withMessage(`${constant.VALIDATION.ID} ${constant.VALIDATION.REQUIRED} `)
+        .isUUID()
+        .withMessage(`${constant.VALIDATION.ID} ${constant.VALIDATION.ALPHA_NUMERIC}`),
+      (req, res, next) => {
+        req.uuid = uuid;
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+          res
+            .status(constant.RESPONSE.NOT_FOUND.CODE)
+            .send(response.res(false, constant.MSG.PARAM_ERROR, errors.array()));
+        } else {
+          next();
+        }
+      },
+    ];
+  },
 
   employeePostparamValidation: () => {
     return [
