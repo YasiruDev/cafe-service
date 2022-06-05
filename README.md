@@ -41,6 +41,7 @@ Follow bellow script on CLI to run this Application
 Find the DB schema under below folder path
 `cafe-service -> src -> migrations`
 
-### API Document
+### Documents
 
 - [API Document](https://github.com/YasiruDev/cafe-service/blob/main/API-Document%20-%201.0.0.docx)
+- [Postman Collection](https://github.com/YasiruDev/cafe-service/blob/main/Cafe.postman_collection.json)
