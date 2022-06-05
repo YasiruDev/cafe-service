@@ -10,6 +10,10 @@ This API service is facilitate to maintain the cafe's and Employees records.
 - Register new employee and asign to the cafe
 - List cafe`s
 - List Employees
+- Edit Cafe
+- Edit Employee
+- Filter Cafe by location
+- List Employees by Cafe
 
 ## Getting started
 
