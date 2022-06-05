@@ -18,6 +18,7 @@
     "bunyan": "1.8.12",
     "dotenv": "5.0.1",
     "express": "4.16.3",
+    "express-fileupload": "^1.4.0",
     "express-validator": "5.3.1",
     "fs": "0.0.1-security",
     "jest": "25.1.0",
